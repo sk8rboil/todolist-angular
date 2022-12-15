@@ -1,0 +1,9 @@
+.delete-btn:hover{
+    background-color: red;
+    color: white;
+}
+
+.edit-btn:hover{
+    background-color: orange;
+    color: white;
+}

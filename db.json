@@ -1,0 +1,23 @@
+{
+  "posts": [
+    {
+      "id": 6,
+      "ischeck": false,
+      "todotext": "todolist-2"
+    },
+    {
+      "id": 7,
+      "ischeck": false,
+      "todotext": "todolist-3"
+    },
+    {
+      "id": 8,
+      "ischeck": false,
+      "todotext": "todolist4"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
