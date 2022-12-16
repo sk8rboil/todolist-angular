@@ -13,12 +13,12 @@
             </div>
         </form>
         <ul class="list-group">
-            <li class="list-group-item" *ngFor="let item of todoData">
+            <li class="list-group-item my-2 border" *ngFor="let item of todoData" style="border-radius: 10px">
                 <div>
                     <div class="row justify-content-center">
                         <div class="col-3">
-                            <button class="btn align-items-start">
-                                <i class="text-success fa-solid fa-circle-check"></i>
+                            <button class="btn align-items-start border-0" (click)="item.ischeck = !item.ischeck">
+                                <i [ngClass]=" item.ischeck ? 'text-success fa-solid fa-circle-check' : 'text-secondary fa-solid fa-circle' "></i>
                             </button>
                         </div>
                         <div class="col-3">

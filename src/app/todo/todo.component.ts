@@ -17,7 +17,7 @@ export class TodoComponent implements OnInit {
   constructor(private formbuilder: FormBuilder,private api: ApiService){ }
   ngOnInit(): void {
     this.formvalue = this.formbuilder.group({
-      ischeck : [],
+      ischeck : [''],
       todotext: [''],
     })
     this.getTodoData();
@@ -38,6 +38,7 @@ export class TodoComponent implements OnInit {
   getTodoData(){
     this.api.getTodotext().subscribe(res=>{
       this.todoData = res;
+
     })
   }
 
@@ -60,5 +61,7 @@ export class TodoComponent implements OnInit {
       this.getTodoData();
     })
   }
+
+
 
 }

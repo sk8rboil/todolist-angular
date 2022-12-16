@@ -27,6 +27,7 @@ export class ApiService {
         return res;
       }));
   }
+
   deleteTodotext(id:number) {
     return this.http.delete<any>('http://localhost:3000/posts/' + id).pipe(
       map((res: any) => {
