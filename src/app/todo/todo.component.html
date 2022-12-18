@@ -4,7 +4,7 @@
     </div>
     <div class="card-body p-4">
         <form [formGroup]="formvalue">
-            <div class="input-group">
+            <div class="input-group mb-2">
                 <input type="text" class="form-control" formControlName="todotext" placeholder="enter list here"
                     style="border-radius: 20px" />
                 <button class="btn text-success border-0" (click)="postTodoData()">
@@ -12,15 +12,63 @@
                 </button>
             </div>
         </form>
-        <ul class="list-group">
-            <li class="list-group-item my-2 border" *ngFor="let item of todoData" style="border-radius: 10px">
+        <ul class="list-group" *ngFor="let item of todoData" style="border-radius: 10px"  >
+            <li class="list-group-item my-2 border" *ngIf="item.ischeck == true" style="background-color: #E8F3D6;">
                 <div>
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center" >
                         <div class="col-3">
                             <button class="btn align-items-start border-0" (click)="item.ischeck = !item.ischeck">
                                 <i [ngClass]=" item.ischeck ? 'text-success fa-solid fa-circle-check' : 'text-secondary fa-solid fa-circle' "></i>
                             </button>
                         </div>
+
+                        <div class="col-3">
+                            <span>{{ item.todotext}}</span>
+                        </div>
+                        <div class="col-3">
+                            <button (click)="editTodoData(item)" class="btn edit-btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button (click)="deleteTodoData(item)" class="btn delete-btn btn-danger" >
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                        </div>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Edit</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form [formGroup]="formvalue">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" formControlName="todotext"
+                                                 />
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  <button (click)="updateTodoData()" class="btn btn-primary" data-bs-dismiss="modal">Update</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item my-2 border" *ngIf="item.ischeck == false">
+                <div>
+                    <div class="row justify-content-center" >
+                        <div class="col-3">
+                            <button class="btn align-items-start border-0" (click)="item.ischeck = !item.ischeck">
+                                <i [ngClass]=" item.ischeck ? 'text-success fa-solid fa-circle-check' : 'text-secondary fa-solid fa-circle' "></i>
+                            </button>
+                        </div>
+
                         <div class="col-3">
                             <span>{{ item.todotext}}</span>
                         </div>
